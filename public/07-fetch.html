@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fetch</title>
+</head>
+<body>
+<button id="btn1">发送</button>
+<button id="btn2">取消</button>
+<script>
+    const btn1 = document.getElementById("btn1");
+    const btn2 = document.getElementById("btn2");
+    let controller = null;
+
+    btn1.addEventListener("click", async () => {
+        controller && controller.abort();
+        controller = new AbortController();
+
+        try {
+            await fetch("http://localhost:3000/test", {
+                signal: controller.signal,
+            });
+        } catch (e) {
+            console.log(e);
+        }
+    });
+    btn2.addEventListener("click", () => {
+        controller && controller.abort();
+    });
+</script>
+</body>
+</html>

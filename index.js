@@ -25,6 +25,9 @@ apiApp.listen(3000, () => {
     console.log("http://localhost:3000");
 });
 
+apiApp.get("/test", () => {
+});
+
 staticApp.use(express.static(path.resolve(__dirname, "public")));
 staticApp.listen(5500, () => {
     console.log("http://localhost:5500");
