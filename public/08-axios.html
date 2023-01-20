@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AXIOS</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+<button id="btn1">btn 1</button>
+<script>
+    /*
+     * # AXIOS
+     *
+     * - axios 默认只会在响应状态为 2xx 的时候才会 resolve
+     */
+    document.getElementById("btn1").addEventListener("click", async () => {
+        try {
+            // 直接调用 axios 发送请求
+            const res = await axios({
+                method: "post",
+                url: "http://localhost:3000/students-api",
+                data: {
+                    name: "白骨精",
+                    age: 16,
+                    gender: "女",
+                    address: "白骨洞",
+                }, // 请求参数
+            });
+
+            console.log(res.data);
+        } catch (e) {
+            console.log(e);
+        }
+    });
+</script>
+</body>
+</html>

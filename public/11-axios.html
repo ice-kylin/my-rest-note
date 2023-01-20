@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AXIOS</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+<button id="btn1">btn 1</button>
+<script>
+    /*
+     * # AXIOS 拦截器
+     *
+     * - 可以对请求或响应进行拦截
+     * - 在请求发送前和响应读取前进行处理数据
+     * - 拦截器支队当前的实例有效
+     */
+    document.getElementById("btn1").addEventListener("click", async () => {
+        // 添加请求拦截器
+        axios.interceptors.request.use(function (config) {
+            // 在发送请求之前做些什么
+            return config;
+        }, function (error) {
+            // 对请求错误做些什么
+            return Promise.reject(error);
+        });
+
+        await axios({
+            url: "/students-api",
+            baseURL: "http://localhost:3000",
+            method: "post",
+            data: {
+                "name": "唐僧",
+                "age": 18,
+                "gender": "男",
+                "address": "女儿国",
+            },
+        });
+    });
+</script>
+</body>
+</html>

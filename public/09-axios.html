@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AXIOS</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+<button id="btn1">btn 1</button>
+<script>
+    /*
+     * # 请求的配置对象
+     *
+     * - `url`: 请求的地址
+     * - `baseURL`: 请求的基础地址
+     * - `method`: 请求的方法，默认是 `get`
+     * - `headers`: 请求的头信息
+     * - `data`: 请求的数据
+     * - `transformRequest`
+     *   - 请求的数据转换函数
+     *   - 需要一个数组作为参数，数组可以接收多个函数
+     *   - 请求发送时多个函数会按照顺序执行
+     *   - 函数在执行时，会接收到两个参数 `data` 和 `headers`
+     *   - 可以在函数中对 `data` 和 `headers` 进行修改
+     *   - 最后一个函数必须返回一个字符串才能使得数据有效
+     * - `params`: 指定路径中的查询字符串
+     * - `timeout`: 请求的超时时间
+     */
+    document.getElementById("btn1").addEventListener("click", async () => {
+        await axios({
+            url: "/students-api",
+            baseURL: "http://localhost:3000",
+            method: "post",
+            // headers: {
+            //     "Content-Type": "application/json",
+            // },
+            data: {
+                "name": "唐僧",
+                "age": 18,
+                "gender": "男",
+                "address": "女儿国",
+            },
+        });
+    });
+</script>
+</body>
+</html>

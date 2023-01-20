@@ -36,11 +36,6 @@ function auth(req, res, cb) {
     }
 }
 
-router.use((req, res, next) => {
-    console.log("哎呀");
-    next();
-});
-
 // 查询所有学生
 router.get("/", (req, res) => {
     auth(req, res, () => {
