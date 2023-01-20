@@ -1,0 +1,9 @@
+#stu-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#stu-table, th, td {
+    padding: 5px;
+    border: 1px solid #000000;
+}
